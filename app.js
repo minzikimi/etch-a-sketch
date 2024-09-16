@@ -9,6 +9,8 @@ const blackBtn = document.querySelector("#black-btn");
 const randomBtn = document.querySelector("#random-btn");
 const submitBtn = document.querySelector("#submit-btn");
 const eraseBtn = document.querySelector("#erase-btn");
+
+
 const userInput = document.querySelector("#user-number");
 let copyUserInput = document.querySelector("#copy-input");
 const hint = document.querySelector("#hint");
@@ -34,8 +36,6 @@ makeCells();
 //delare fun audio 
 audio = new Audio("Sound Effect/8bit-music-for-game-68698.mp3");
 let isPlaying = false;
-
-
 
 
 //Add fun music upon cliking the banner
@@ -94,8 +94,6 @@ function setDefaultGrid(){
   hint.textContent ="";
 }
 
-
-
 function makeCells() {
   let number = parseInt(userInput.value);
   if (isNaN(number) || number < 2 || number > 99) {
@@ -108,7 +106,7 @@ function makeCells() {
     userInput.value = "";
   
 
-  // Clear existing grid  ask question
+  // Clear existing grid  
     gamePad.innerHTML = "";
 
   // Create grid
@@ -139,7 +137,6 @@ function applyHoverEffect() {
 
 //why cant i  declare let cells = document.querySelectorAll(".gamePad .column"); in global scope. ask
 
-
 function applyGreenHoverEffect() {
   // resetGridColour();//clear previous play
   let cells = document.querySelectorAll(".gamePad .column");
@@ -149,7 +146,6 @@ function applyGreenHoverEffect() {
     });
   });
 }
-
 
 function applyRandomHoverEffect() {
   
@@ -161,7 +157,6 @@ function applyRandomHoverEffect() {
   });
 }
 
-
 function resetGridColour(){
   let cells = document.querySelectorAll(".gamePad .column");
   cells.forEach(item => {
@@ -172,9 +167,6 @@ function resetGridColour(){
   })
 }
 
-
-
-
 function eraseCellColour() {
   let cells = document.querySelectorAll(".gamePad .column");
   cells.forEach(item => {
@@ -184,19 +176,14 @@ function eraseCellColour() {
   });
 }
 
-
-
-
-
-function generateRandomColour(){
+function generateRandomColour() {
   let lettersArray = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+  let colour = "#";
   
-  let ran1=lettersArray[Math.floor(Math.random()*lettersArray.length+1)];
-  let ran2=lettersArray[Math.floor(Math.random()*lettersArray.length+1)];
-  let ran3=lettersArray[Math.floor(Math.random()*lettersArray.length+1)];
-  let ran4=lettersArray[Math.floor(Math.random()*lettersArray.length+1)];
-  let ran5=lettersArray[Math.floor(Math.random()*lettersArray.length+1)];
-  let ran6=lettersArray[Math.floor(Math.random()*lettersArray.length+1)];
-  const colour = "#"+ran1+ran2+ran3+ran4+ran5+ran6;
+  for (let i = 0; i < 6; i++) {
+    let randomIndex = Math.floor(Math.random() * lettersArray.length);
+    colour = colour+ lettersArray[randomIndex];
+  }
   return colour;
 }
+
